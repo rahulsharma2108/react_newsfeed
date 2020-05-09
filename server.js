@@ -19,6 +19,9 @@ app.get('/',(req,res)=>{
    fetch(`https://hn.algolia.com/api/v1/search_by_date?tags=story&page=${page}`)
    .then(response=> response.json())
     .then((initialData)=>{
+
+        console.log("[Server got response]");
+        
         const hits = initialData.hits;
         const context =  {hits,page} ;
         const content = ReactDOMServer.renderToString(
@@ -40,6 +43,8 @@ app.get('/',(req,res)=>{
             </html>
         `;
         res.send(html);
+    }).catch((error)=>{
+        console.error("[Eror fetching response from API]",error);
     });
     
 });
