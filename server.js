@@ -15,7 +15,9 @@ app.use(bodyParser.json());
 app.use(express.static('build/public'));
 
 console.log('######### file loaded');
-
+app.get('/',(req,res)=>{
+    res.redirect('/news');
+});
 app.get('/news',(req,res)=>{
     console.log("In get / request");
     const {page = 1} = req.query;
@@ -51,6 +53,9 @@ app.get('/news',(req,res)=>{
     });
     
 });
+app.get('*', function(req, res){
+    res.send('<h1>Page not found</h1>', 404);
+  });
 
 app.listen(PORT,()=>{
     console.log(`App listening on port : ${PORT}`);
