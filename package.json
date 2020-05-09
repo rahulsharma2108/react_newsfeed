@@ -10,6 +10,9 @@
     "dev": "npm-run-all --parallel webpack:*",
     "start":"webpack --config webpack.client.js && webpack --config webpack.server.js && node build/bundle.js"
   },
+  "engines": {
+    "node": "12.14.1"
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
