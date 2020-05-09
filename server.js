@@ -16,7 +16,7 @@ app.use(express.static('build/public'));
 
 console.log('######### file loaded');
 
-app.get('/',(req,res)=>{
+app.get('/news',(req,res)=>{
     console.log("In get / request");
     const {page = 1} = req.query;
    fetch(`https://hn.algolia.com/api/v1/search_by_date?tags=story&page=${page}`)
