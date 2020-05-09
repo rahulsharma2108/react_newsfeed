@@ -14,14 +14,17 @@ const PORT = process.env.port || 3000;
 app.use(bodyParser.json());
 app.use(express.static('build/public'));
 
+console.log('######### file loaded');
+
 app.get('/',(req,res)=>{
+    console.log("In get / request");
     const {page = 1} = req.query;
    fetch(`https://hn.algolia.com/api/v1/search_by_date?tags=story&page=${page}`)
    .then(response=> response.json())
     .then((initialData)=>{
 
         console.log("[Server got response]");
-        
+
         const hits = initialData.hits;
         const context =  {hits,page} ;
         const content = ReactDOMServer.renderToString(
