@@ -1,0 +1,9 @@
+.newsItem{
+    display: flex;
+}
+.listContainer{
+    background: lightgray;
+}
+.upvote{
+    margin: 0 10px;
+}

@@ -1,0 +1,10 @@
+.header{
+    padding:10px;
+    display:flex;
+    background:#ff6600
+}
+.title{
+    font-size: 13px;
+    font-weight: 700;
+    font-family: Verdana, Geneva, sans-serif;
+}
