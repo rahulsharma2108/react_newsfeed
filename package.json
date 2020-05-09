@@ -7,7 +7,8 @@
     "webpack:client": "webpack --config webpack.client.js --watch",
     "webpack:server": "webpack --config webpack.server.js --watch",
     "webpack:start": "nodemon --watch build --exec node build/bundle.js",
-    "dev": "npm-run-all --parallel webpack:*"
+    "dev": "npm-run-all --parallel webpack:*",
+    "start":"webpack --config webpack.client.js && webpack --config webpack.server.js && node build/bundle.js"
   },
   "keywords": [],
   "author": "",
