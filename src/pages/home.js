@@ -25,13 +25,14 @@ export default class Home extends React.Component{
        
     }
     render(){
+        console.log( this.state.storiesList);
         return (
             <div className={'container'}>
             <Header />
             <FeedsList storiesList={this.state.storiesList}/>
-            <a href={`/news/?page=${this.state.page}`}>More</a>
+            <a href={`/news?page=${this.state.page}`}>More</a>
 
-            {/* <LineGraph storiesList={this.state.storiesList}></LineGraph> */}
+            <LineGraph storiesList={this.state.storiesList}></LineGraph>
             {/*Footer/> */}
             </div>
         );
