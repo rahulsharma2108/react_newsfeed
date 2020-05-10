@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './pages/home';
+import Home from './compoenents/Home/Home';
 import {Switch,Route} from 'react-router';
 
 export default class App extends React.Component{

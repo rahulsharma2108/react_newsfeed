@@ -1,11 +1,9 @@
 import React from 'react';
 
-import Header from './Header';
+import Header from '../Header/Header';
 import home from './home.css';
-import FeedsList from './FeedsList';
-import Footer from './Footer';
+import FeedsList from '../FeedList/FeedsList';
 import LineGraph from './LineGraph';
-
 
 export default class Home extends React.Component{
     constructor(props){
@@ -25,7 +23,6 @@ export default class Home extends React.Component{
        
     }
     render(){
-        console.log( this.state.storiesList);
         return (
             <div className={'container'}>
             <Header />
@@ -38,5 +35,3 @@ export default class Home extends React.Component{
         );
     }
 }
-
-// https://www.youtube.com/watch?v=LfA2XDmgVbo
