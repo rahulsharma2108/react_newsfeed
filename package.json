@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/bundle.js",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
   "scripts": {
     "webpack:client": "webpack --config webpack.client.js --watch",
     "webpack:server": "webpack --config webpack.server.js --watch",
     "webpack:start": "nodemon --watch build --exec node build/bundle.js",
     "dev": "npm-run-all --parallel webpack:*",
-    "start": "webpack --config webpack.client.js && webpack --config webpack.server.js && node build/bundle.js"
+    "start": "webpack --config webpack.client.js && webpack --config webpack.server.js && node build/bundle.js",
+    "test": "jest"
   },
   "engines": {
     "node": "12.14.1"
@@ -41,5 +48,13 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "babel-jest": "^26.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "react-test-renderer": "^16.13.1"
   }
 }
