@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../Header/Header";
 import "./home.css";
 import FeedsList from "../FeedList/FeedsList";
-import LineGraph from "./LineGraph";
+import LineGraph from "../Graph/LineGraph";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -25,7 +25,6 @@ export default class Home extends React.Component {
   componentDidMount() {
     const { storiesList } = this.state;
     const newStorylist = storiesList.map((story) => {
-      const storyPoints = story.points;
       const storageObj = localStorage.getItem(story.objectID);
       if (storageObj) {
         const storeageVotes = JSON.parse(storageObj).votes;

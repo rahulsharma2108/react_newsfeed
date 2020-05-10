@@ -1,5 +1,4 @@
 import React from "react";
-import upvote from "../../images/upvote.gif";
 
 import "./feedlist.css";
 
@@ -67,7 +66,7 @@ export default class FeedsList extends React.Component {
               hideStory,
             }) => {
               return (
-                <>
+                <div key={objectID}>
                   {hideStory === undefined && (
                     <div className={"newsItem"}>
                       <div className={"rank text-center"}>{points}</div>
@@ -95,7 +94,7 @@ export default class FeedsList extends React.Component {
                       </div>
                     </div>
                   )}
-                </>
+                </div>
               );
             }
           )}

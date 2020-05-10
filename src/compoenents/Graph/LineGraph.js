@@ -57,11 +57,7 @@ export default class LineGraph extends React.Component {
     return (
       <>
         {populateGraph && storiesList && (
-          <div
-            style={{
-              height: "300px",
-            }}
-          >
+          <div className={"graphContainer"}>
             <ReactHighcharts config={config} />
           </div>
         )}
