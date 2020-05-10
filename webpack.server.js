@@ -29,7 +29,13 @@ module.exports={
                     modules:true,
                     sourceMap:true
                 }
-            }
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+               
+                loader: 'file-loader',
+            },
+                
         ]
     },
     externals:[webpackNodeExternals()]

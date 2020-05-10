@@ -37,6 +37,7 @@ app.get('/news',(req,res)=>{
         const html = `
             <html>
                 <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <script>window.__storiesList__= ${JSON.stringify(hits)};window.__page__=${page}</script>
                 </head>
                 <body>

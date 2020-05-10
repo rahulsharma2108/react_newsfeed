@@ -28,7 +28,7 @@ export default class FeedsList extends React.Component{
                                         {points}
                                     </div>
                                     <div className={'upvote'} onClick={()=>this.upvotePost(objectID,points)}>
-                                        <img src={'./src/images/upvote.gif'}/>
+                                        <img src={'img/upvote.gif'}/>
                                     </div>
                                     <div className={'storyTitle'}>
                                         {title}

@@ -9,7 +9,6 @@ export default class LineGraph extends React.Component {
     }
 
     componentDidMount() {
-        console.log('in compoenent mount');
         this.recreateChartData();
 
     }
@@ -30,6 +29,12 @@ export default class LineGraph extends React.Component {
     render() {
         const {votes, ids, populateGraph} = this.state;
         const config = {
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: null
+              },
             xAxis: {
                 title: {   
                     text: 'ID'
