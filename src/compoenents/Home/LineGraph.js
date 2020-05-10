@@ -15,9 +15,11 @@ export default class LineGraph extends React.Component {
     if (storiesList) {
       const votesArr = [];
       const idArr = [];
-      this.props.storiesList.forEach(({ points, objectID }) => {
-        votesArr.push(points);
-        idArr.push(objectID);
+      this.props.storiesList.forEach(({ points, objectID, hideStory }) => {
+        if (hideStory == undefined) {
+          votesArr.push(points);
+          idArr.push(objectID);
+        }
       });
       return { votes: votesArr, ids: idArr };
     }

@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "../Header/Header";
-import home from "./home.css";
+import "./home.css";
 import FeedsList from "../FeedList/FeedsList";
 import LineGraph from "./LineGraph";
 
@@ -29,19 +29,26 @@ export default class Home extends React.Component {
       const storageObj = localStorage.getItem(story.objectID);
       if (storageObj) {
         const storeageVotes = JSON.parse(storageObj).votes;
+        const hideStory = JSON.parse(storageObj).hideStory;
         story.points += storeageVotes;
         story.isUpVoted = true;
+        story.hideStory = hideStory;
       }
       return story;
     });
     this.setState({ storiesList: newStorylist });
   }
 
-  updateVotes(objectID, points) {
+  updateStory(objectID, action) {
     const { storiesList } = this.state;
     const story = storiesList.find((story) => story.objectID === objectID);
-    story.points += 1;
-    story.isUpVoted = true;
+    if (action === "upvote") {
+      story.points += 1;
+      story.isUpVoted = true;
+    }
+    if (action === "hide") {
+      story.hideStory = true;
+    }
     this.setState({ storiesList: storiesList });
   }
 
@@ -51,14 +58,15 @@ export default class Home extends React.Component {
         <Header />
         <FeedsList
           storiesList={this.state.storiesList}
-          setUpdtedVote={(objectId, points) =>
-            this.updateVotes(objectId, points)
-          }
+          updateStory={(objectId, action) => this.updateStory(objectId, action)}
         />
-        <a href={`/news?page=${this.state.page}`}>More</a>
+        <div className={"moreLinkWrapper"}>
+          <a className={"moreLink"} href={`/news?page=${this.state.page}`}>
+            More
+          </a>
+        </div>
 
         <LineGraph storiesList={this.state.storiesList}></LineGraph>
-        {/*Footer/> */}
       </div>
     );
   }

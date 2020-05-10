@@ -2,54 +2,100 @@ import React from "react";
 import upvote from "../../images/upvote.gif";
 
 import "./feedlist.css";
+
+export const StortyActions = {
+  HIDE: "hide",
+  UPVOTE: "upvote",
+};
+
 export default class FeedsList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      upvotesListId: [],
-    };
   }
   compponentDidMount() {
     this.upvotePost = this.upvotePost.bind(this);
   }
-  upvotePost(objectID, points) {
+  storyActions(objectID, action) {
     const storyFromStorage = localStorage.getItem(`${objectID}`);
     if (storyFromStorage) {
       const parsedStorage = JSON.parse(storyFromStorage);
       const votedCount = parseInt(parsedStorage.votes);
-      if (votedCount === 10) {
-        return false;
+      if (action === StortyActions.UPVOTE) {
+        if (votedCount === 10) {
+          return false;
+        }
+        parsedStorage.votes = votedCount + 1;
+      } else if (action === StortyActions.HIDE) {
+        parsedStorage.hideStory = true;
       }
-      parsedStorage.votes = votedCount + 1;
       localStorage.setItem(`${objectID}`, JSON.stringify(parsedStorage));
     } else {
       const storageObj = {};
-      storageObj.votes = 1;
+      if (action === StortyActions.UPVOTE) {
+        storageObj.votes = 1;
+      } else if (action === StortyActions.HIDE) {
+        storageObj.hideStory = true;
+      }
       localStorage.setItem(`${objectID}`, JSON.stringify(storageObj));
     }
-
-    this.setState((prevState) => ({
-      upvotesListId: [...prevState.upvotesListId, objectID],
-    }));
-    this.props.setUpdtedVote(objectID, points);
+    this.props.updateStory(objectID, action);
+  }
+  renderHeader() {
+    return (
+      <div className={"newsItem stories-header"}>
+        <div className={"rank text-center"}>Votes</div>
+        <div className={"upvoteWrapper"}>Upvote</div>
+        <div className={"storyTitle text-center"}>Title</div>
+        <div className={"author"}>Author</div>
+        <div className={"hideButton actionCol"}>Action</div>
+      </div>
+    );
   }
   renderStories() {
     const { storiesList } = this.props;
-    const { upvotesListId = [] } = this.state || {};
     return (
       <>
         {storiesList &&
           storiesList.map(
-            ({ title, url, author, points, objectID, isUpVoted }) => {
+            ({
+              title,
+              url,
+              author,
+              points,
+              objectID,
+              isUpVoted,
+              hideStory,
+            }) => {
               return (
-                <div className={"newsItem"}>
-                  <div className={"rank"}>{points}</div>
-                  <div
-                    className={isUpVoted ? "upvote green" : "upvote"}
-                    onClick={() => this.upvotePost(objectID, points)}
-                  ></div>
-                  <div className={"storyTitle"}>{title}</div>
-                </div>
+                <>
+                  {hideStory === undefined && (
+                    <div className={"newsItem"}>
+                      <div className={"rank text-center"}>{points}</div>
+                      <div className={"upvoteWrapper"}>
+                        <div
+                          className={isUpVoted ? "upvote green" : "upvote"}
+                          onClick={() =>
+                            this.storyActions(objectID, StortyActions.UPVOTE)
+                          }
+                        ></div>
+                      </div>
+                      <div className={"storyTitle"}>
+                        <a href={url} className={"titleLink"}>
+                          {title}{" "}
+                        </a>
+                      </div>
+                      <div className={"author"}>{author}</div>
+                      <div
+                        className={"hideButton"}
+                        onClick={() =>
+                          this.storyActions(objectID, StortyActions.HIDE)
+                        }
+                      >
+                        Hide
+                      </div>
+                    </div>
+                  )}
+                </>
               );
             }
           )}
@@ -58,6 +104,11 @@ export default class FeedsList extends React.Component {
   }
 
   render() {
-    return <div className={"listContainer"}>{this.renderStories()}</div>;
+    return (
+      <div className={"listContainer"}>
+        {this.renderHeader()}
+        {this.renderStories()}
+      </div>
+    );
   }
 }

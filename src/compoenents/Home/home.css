@@ -1,7 +1,16 @@
-.container{
-   width:80%;
+.container {
+  width: 80%;
 }
-.wrapper{
-    display: flex;
-    justify-content: center;
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.moreLinkWrapper {
+  background-color: whitesmoke;
+  padding: 10px;
+  font-size: 20px;
+}
+.moreLink {
+  color: #ff6600;
+  text-decoration: none;
 }
