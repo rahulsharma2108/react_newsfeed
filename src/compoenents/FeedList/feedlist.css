@@ -1,6 +1,12 @@
 .newsItem {
   display: flex;
 }
+.newsItem:nth-child(even) {
+  background: whitesmoke;
+}
+.newsItem:nth-child(odd) {
+  background: lightgray;
+}
 .listContainer {
   background: lightgray;
 }
@@ -18,4 +24,36 @@
 }
 .green {
   border-bottom-color: green;
+}
+.hideButton {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.actionCol {
+  text-decoration: none;
+  cursor: default;
+}
+.rank {
+  width: 5%;
+}
+.upvoteWrapper {
+  width: 5%;
+}
+.storyTitle {
+  width: 50%;
+}
+.author {
+  width: 20%;
+}
+.text-center {
+  text-align: center;
+}
+.stories-header {
+  background: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+.titleLink {
+  color: #000;
+  text-decoration: none;
 }
