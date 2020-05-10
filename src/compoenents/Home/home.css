@@ -1,5 +1,15 @@
 .container {
   width: 80%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    margin: 0;
+  }
+  body {
+    margin: 0;
+  }
 }
 .wrapper {
   display: flex;
@@ -7,8 +17,9 @@
 }
 .moreLinkWrapper {
   background-color: whitesmoke;
-  padding: 10px;
+  padding: 10px 15px;
   font-size: 20px;
+  width: 100%;
 }
 .moreLink {
   color: #ff6600;

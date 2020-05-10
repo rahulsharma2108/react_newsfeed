@@ -42,11 +42,11 @@ export default class FeedsList extends React.Component {
   renderHeader() {
     return (
       <div className={"newsItem stories-header"}>
-        <div className={"rank text-center"}>Votes</div>
-        <div className={"upvoteWrapper"}>Upvote</div>
-        <div className={"storyTitle text-center"}>Title</div>
-        <div className={"author"}>Author</div>
-        <div className={"hideButton actionCol"}>Action</div>
+        <div className={"rank cell"}>Votes</div>
+        <div className={"upvoteWrapper cell"}>Upvote</div>
+        <div className={"storyTitle cell"}>Title</div>
+        <div className={"author cell"}>Author</div>
+        <div className={"hideButton actionCol cell"}>Action</div>
       </div>
     );
   }
@@ -66,11 +66,11 @@ export default class FeedsList extends React.Component {
               hideStory,
             }) => {
               return (
-                <div key={objectID}>
+                <React.Fragment key={objectID}>
                   {hideStory === undefined && (
                     <div className={"newsItem"}>
-                      <div className={"rank text-center"}>{points}</div>
-                      <div className={"upvoteWrapper"}>
+                      <div className={"rank cell"}>{points}</div>
+                      <div className={"upvoteWrapper cell"}>
                         <div
                           className={isUpVoted ? "upvote green" : "upvote"}
                           onClick={() =>
@@ -78,14 +78,14 @@ export default class FeedsList extends React.Component {
                           }
                         ></div>
                       </div>
-                      <div className={"storyTitle"}>
+                      <div className={"storyTitle cell"}>
                         <a href={url} className={"titleLink"}>
                           {title}{" "}
                         </a>
                       </div>
-                      <div className={"author"}>{author}</div>
+                      <div className={"author cell"}>{author}</div>
                       <div
-                        className={"hideButton"}
+                        className={"hideButton cell"}
                         onClick={() =>
                           this.storyActions(objectID, StortyActions.HIDE)
                         }
@@ -94,7 +94,7 @@ export default class FeedsList extends React.Component {
                       </div>
                     </div>
                   )}
-                </div>
+                </React.Fragment>
               );
             }
           )}

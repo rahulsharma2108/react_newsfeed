@@ -1,10 +1,11 @@
-.header{
-    padding:10px;
-    display:flex;
-    background:#ff6600
+.header {
+  padding: 10px 15px;
+  display: flex;
+  background: #ff6600;
+  width: 100%;
 }
-.title{
-    font-size: 13px;
-    font-weight: 700;
-    font-family: Verdana, Geneva, sans-serif;
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: Verdana, Geneva, sans-serif;
 }
