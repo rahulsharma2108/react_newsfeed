@@ -1,9 +1,21 @@
-.newsItem{
-    display: flex;
+.newsItem {
+  display: flex;
 }
-.listContainer{
-    background: lightgray;
+.listContainer {
+  background: lightgray;
 }
-.upvote{
+/* .upvote{
     margin: 0 10px;
+} */
+.upvote {
+  margin: 5px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid gray;
+  cursor: pointer;
+}
+.green {
+  border-bottom-color: green;
 }
